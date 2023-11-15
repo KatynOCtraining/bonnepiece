@@ -30,7 +30,7 @@ for (let i = 0; i < pieces.length; i++) {
 
     const sectionFiches = document.querySelector(".fiches");
     const pieceElement = document.createElement("article")
-    
+
 
     sectionFiches.appendChild(pieceElement);
 
@@ -50,10 +50,10 @@ boutonTrier.addEventListener("click", function () {
     const piecesOrdonnees = Array.from(pieces);
     piecesOrdonnees.sort(function (a, b) {
         return a.prix - b.prix;
-     });
-     console.log(piecesOrdonnees);
+    });
+    console.log(piecesOrdonnees);
 });
- 
+
 
 
 const boutonFiltrer = document.querySelector(".btn-filtrer");
@@ -83,3 +83,48 @@ boutonDescription.addEventListener("click", function () {
     });
     console.log(piecesFiltrees)
 });
+
+
+
+
+
+
+const noms = pieces.map(piece => piece.nom);
+for (let i = pieces.length - 1; i >= 0; i--) {
+    if (pieces[i].prix > 35) {
+        noms.splice(i, 1)
+    }
+}
+console.log(noms)
+
+const abordablesElements = document.createElement('ul');
+
+for (let i = 0; i < noms.length; i++) {
+    const nomElement = document.createElement('li');
+    nomElement.innerText = noms[i];
+    abordablesElements.appendChild(nomElement)
+}
+
+document.querySelector('.abordables')
+    .appendChild(abordablesElements)
+
+
+const nomDisponibles = pieces.map(piece => piece.nom)
+const prixDisponibles = pieces.map(piece => piece.prix)
+
+
+for (let i = pieces.length - 1; i >= 0; i--) {
+    if (pieces[i].disponibilite === false) {
+        nomDisponibles.splice(i, 1)
+        prixDisponibles.splice(i, 1)
+    }
+}
+
+const disponiblesElement = document.createElement("ul")
+for (let i = 0; i < nomDisponibles.length; i++) {
+    const nomElement = document.createElement("li");
+    nomElement.innerText = `${nomDisponibles[i]} - ${prixDisponibles[i]} €`
+    disponiblesElement.appendChild(nomElement)
+}
+
+document.querySelector(".disponibles").appendChild(disponiblesElement)
