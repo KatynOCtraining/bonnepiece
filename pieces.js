@@ -1,7 +1,10 @@
-import { ajoutListenersAvis } from "./avis.js";
+import { ajoutListenersAvis, ajoutListenerEnvoyerAvis } from "./avis.js";
+
 // Récupération des pièces depuis le fichier JSON
-const reponse = await fetch('pieces-autos.json');
+const reponse = await fetch('http://localhost:8081/pieces/');
 const pieces = await reponse.json();
+// on appel la fonction pour ajouter le listener au formulaire
+ajoutListenerEnvoyerAvis()
 
 function genererPieces(pieces){
     for (let i = 0; i < pieces.length; i++) {
@@ -40,14 +43,13 @@ function genererPieces(pieces){
         //Code aJouté
         pieceElement.appendChild(avisBouton);
     
-    }
-    
-      ajoutListenersAvis();
+     }
+     ajoutListenersAvis();
 }
 
 genererPieces(pieces);
 
- //gestion des bouttons 
+ //gestion des boutons 
 const boutonTrier = document.querySelector(".btn-trier");
 
 boutonTrier.addEventListener("click", function () {
