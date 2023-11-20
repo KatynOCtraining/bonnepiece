@@ -1,3 +1,5 @@
+
+
 {
   "name": "7697016-front-end.1",
   "version": "1.0.0",
@@ -5,7 +7,8 @@
   "main": "pieces.js",
   "scripts": {
     "start": "http-server",
-    "dev": "http-server"
+    "dev": "http-server",
+    "lint": "eslint*.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,10 @@
   "dependencies": {
     "chart.js": "^4.4.0",
     "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.53.0"
   }
+
 }
+
